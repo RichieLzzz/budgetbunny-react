@@ -1,0 +1,154 @@
+/* Base page layout and background settings */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  /* Dashboard background image settings */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Day and night mode background images for dashboard */
+body.theme-dashd { background-image: url("../assets/img/Dashboardbg.png"); }
+body.theme-dashn { background-image: url("../assets/img/Dashboard-night.png"); }
+
+/* In night mode, make cards darker for contrast */
+body.theme-dashn .card { background: rgba(0,0,0,0.45); }
+
+/* Main wrapper: semi-transparent container for dashboard content */
+.dashboard-wrapper {
+  flex: 1;                           /* Fill the remaining height of the wrapper */
+  width: 100%;
+  margin: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grid layout for four info cards: 2 columns x 2 rows */
+.dashboard {
+  flex: 1;                           /* Prevent wrapper overflow */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+  grid-template-rows: repeat(2, 1fr);    /* Two equal-height rows */
+  gap: 20px;
+  min-height: 0;                     /* Prevent content overflow */
+}
+
+/* Single card component within the dashboard */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--card-bg, #e2e2e2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Fixed-position action buttons at bottom of the dashboard */
+.action-buttons {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  position: fixed;                   /* Keep buttons fixed at bottom */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+}
+
+/* Base styles for buttons inside dashboard */
+.btn {
+  width: 320px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-3px); }
+
+/* Button variants for different actions */
+.add-expense { background: #ff8c42; color: #fff; }
+.voice-input { background: #2a9d8f; color: #fff; }
+
+/* Responsive grid for stat cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin: 40px auto;
+}
+
+/* Statistic card styling */
+.card.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;     /* Ensure full width */
+  height: 100%;    /* Ensure full height */
+  border-radius: 16px;
+  background: var(--card-bg, #e2e2e2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Large number styling inside stat cards */
+.card.stat .big {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* Container to center dashboard content and limit max width */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header section of dashboard */
+.db-header {
+  width: 100%;
+  margin-bottom: 24px;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.db-header .logo {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+.db-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* Simple list styling for categories */
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+.category-list li { margin-bottom: 4px; }
