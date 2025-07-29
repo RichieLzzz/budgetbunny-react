@@ -8,6 +8,7 @@
 
 Now support user registration and login
 Supports input and expense record management
+Please see backend file under 'backend' branch
 
 7.15/2025 Update
 
